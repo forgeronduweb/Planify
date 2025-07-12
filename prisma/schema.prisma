@@ -1,0 +1,52 @@
+// Configuration du générateur Prisma Client
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Configuration de la source de données (SQLite)
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// Enum pour les priorités
+enum Priority {
+  IMPORTANTE
+  MOYENNE
+  PAS_IMPORTANTE
+}
+
+// Enum pour les catégories
+enum Category {
+  PERSONAL
+  WORK
+  HEALTH
+  EDUCATION
+  FINANCE
+  TRAVEL
+  SHOPPING
+  OTHER
+}
+
+// Modèle User : représente un utilisateur dans l'application
+model User {
+  id       String  @id @default(cuid())  // Identifiant unique généré automatiquement
+  name     String                        // Nom de l'utilisateur
+  email    String  @unique               // Email unique de l'utilisateur
+  password String                        // Mot de passe hashé
+  tasks    Task[]                        // Relation avec les tâches de l'utilisateur
+}
+
+// Modèle Task : représente une tâche dans l'application
+model Task {
+  id          Int       @id @default(autoincrement())  // Identifiant unique auto-incrémenté
+  title       String                                   // Titre de la tâche (obligatoire)
+  description String?                                  // Description optionnelle
+  status      String    @default("non accomplie")      // Statut avec valeur par défaut
+  priority    Priority?                                // Priorité optionnelle
+  category    Category                                 // Catégorie obligatoire
+  createdAt   DateTime  @default(now())                // Date de création
+  completedAt DateTime?                                // Date de complétion optionnelle
+  userId      String                                   // ID de l'utilisateur propriétaire
+  user        User      @relation(fields: [userId], references: [id])  // Relation avec l'utilisateur
+}

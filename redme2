@@ -1,0 +1,106 @@
+# Documentation Détaillée du Projet TodoList
+
+## Structure du Projet
+
+Le projet est une application TodoList moderne construite avec les technologies suivantes :
+- Next.js (Framework React)
+- TypeScript
+- Prisma (ORM)
+- Tailwind CSS
+- PostgreSQL (Base de données)
+
+## Organisation des Dossiers
+
+### `/src`
+Contient le code source principal de l'application :
+- `/app` : Pages et composants de l'application
+- `/components` : Composants réutilisables
+- `/lib` : Utilitaires et configurations
+- `/styles` : Fichiers de style
+
+### `/prisma`
+Contient la configuration de la base de données :
+- `schema.prisma` : Définition du schéma de la base de données
+- `migrations` : Historique des migrations de la base de données
+
+### `/public`
+Contient les ressources statiques (images, fonts, etc.)
+
+## Configuration Technique
+
+### Dépendances Principales
+- `next` : Framework React pour le développement web
+- `@prisma/client` : Client ORM pour la base de données
+- `tailwindcss` : Framework CSS utilitaire
+- `typescript` : Support du typage statique
+
+### Fichiers de Configuration
+- `next.config.ts` : Configuration de Next.js
+- `tailwind.config.ts` : Configuration de Tailwind CSS
+- `tsconfig.json` : Configuration de TypeScript
+- `package.json` : Gestion des dépendances et scripts
+
+## Fonctionnalités
+
+1. **Gestion des Todos**
+   - Création de nouvelles tâches
+   - Modification des tâches existantes
+   - Suppression de tâches
+   - Marquage des tâches comme complétées
+
+2. **Interface Utilisateur**
+   - Design responsive avec Tailwind CSS
+   - Composants interactifs
+   - Navigation fluide
+
+3. **Base de Données**
+   - Stockage persistant des todos
+   - Relations entre les entités
+   - Migrations automatiques
+
+## Démarrage du Projet
+
+1. Installation des dépendances :
+   ```bash
+   npm install
+   ```
+
+2. Configuration de la base de données :
+   ```bash
+   npx prisma generate
+   npx prisma migrate dev
+   ```
+
+3. Lancement du serveur de développement :
+   ```bash
+   npm run dev
+   ```
+
+## Bonnes Pratiques
+
+1. **Code**
+   - Utilisation stricte de TypeScript
+   - Composants réutilisables
+   - Gestion d'état optimisée
+
+2. **Base de Données**
+   - Migrations versionnées
+   - Relations bien définies
+   - Indexation appropriée
+
+3. **Sécurité**
+   - Validation des entrées
+   - Protection des routes
+   - Gestion sécurisée des sessions
+
+## Maintenance
+
+1. **Mises à jour**
+   - Mise à jour régulière des dépendances
+   - Tests automatisés
+   - Documentation à jour
+
+2. **Déploiement**
+   - Processus de déploiement automatisé
+   - Environnements de staging et production
+   - Monitoring des performances 
