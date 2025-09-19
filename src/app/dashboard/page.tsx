@@ -16,15 +16,16 @@ export default function DashboardPage() {
   const router = useRouter();
   // État pour le nom de l'utilisateur
   const [userName, setUserName] = useState('');
-  type Task = { category: string; [key: string]: unknown };
-  const [tasks, setTasks] = useState<Task[]>([]);
+  // type Task = { category: string; [key: string]: unknown };
+  // const [tasks, setTasks] = useState<Task[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
   // Fonction pour récupérer les tâches
   const fetchTasks = useCallback(async () => {
     try {
       const res = await axios.get('/api/tasks');
-      setTasks(res.data as Task[]);
+      // setTasks(res.data as Task[]);
+      console.log('Tâches récupérées:', res.data);
     } catch (error) {
       console.error('Erreur lors du chargement des tâches:', error);
     }
