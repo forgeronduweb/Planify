@@ -37,6 +37,7 @@ export async function POST(req: Request) {
 
     return response;
   } catch (error) {
+    console.error('Registration error:', error);
     return NextResponse.json({ message: 'Something went wrong' }, { status: 500 });
   }
 }

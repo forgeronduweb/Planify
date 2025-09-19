@@ -42,7 +42,7 @@ export default function RegisterPage() {
           onChange={e => setPassword(e.target.value)}
           required
         />
-        <button className="bg-blue-500 text-white px-4 py-2 rounded">S'inscrire</button>
+        <button className="bg-blue-500 text-white px-4 py-2 rounded">S&apos;inscrire</button>
       </form>
       {message && <p className="mt-2">{message}</p>}
     </div>

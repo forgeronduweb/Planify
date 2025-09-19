@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import Link from 'next/link';
 import axios from 'axios';
 
 // Configuration d'axios pour inclure les cookies
@@ -29,7 +28,7 @@ export default function AuthForm() {
         setMessage('');
         router.push('/dashboard'); // Redirige vers le dashboard
       }
-    } catch (error: any) {
+    } catch (error: unknown) {
       if (axios.isAxiosError(error)) {
         setMessage(error.response?.data?.message || error.response?.data?.error || 'Une erreur est survenue.');
       } else {

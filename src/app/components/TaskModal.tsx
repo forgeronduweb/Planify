@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { CalendarIcon, ChevronLeftIcon, ChevronRightIcon, ClockIcon, ClipboardIcon } from '@heroicons/react/24/outline';
+import React, { useState, useEffect, useMemo } from 'react';
+import { CalendarIcon, ClockIcon, ClipboardIcon } from '@heroicons/react/24/outline';
 import axios from 'axios';
 
 const HOURS = [
@@ -37,19 +37,17 @@ export default function TaskModal({ open, onClose, onTaskCreated, editTask, setE
   const [year, setYear] = useState(date.getFullYear());
   const [startHour, setStartHour] = useState('09:00');
   const [endHour, setEndHour] = useState('14:00');
-  const [showYearDropdown, setShowYearDropdown] = useState(false);
   const [showListDropdown, setShowListDropdown] = useState(false);
-  const [selectedList, setSelectedList] = useState('');
   const [view, setView] = useState<'calendar' | 'notes'>('calendar');
   const [notes, setNotes] = useState('');
   const [notesPriority, setNotesPriority] = useState("");
   const [showPriorityDropdown, setShowPriorityDropdown] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('');
-  const priorities = [
+  const priorities = useMemo(() => ([
     { label: 'Importante', color: 'text-red-600', bg: 'bg-red-50', value: 'IMPORTANTE' },
     { label: 'Moyenne', color: 'text-yellow-600', bg: 'bg-yellow-50', value: 'MOYENNE' },
     { label: 'Mineur', color: 'text-blue-600', bg: 'bg-blue-50', value: 'PAS_IMPORTANTE' },
-  ];
+  ]), []);
   const categories = [
     { label: 'Personnel', value: 'PERSONAL', icon: '👤' },
     { label: 'Travail', value: 'WORK', icon: '💼' },
@@ -78,7 +76,7 @@ export default function TaskModal({ open, onClose, onTaskCreated, editTask, setE
       setNotesPriority(priorities.find(p => p.value === editTask.priority)?.label || '');
       setView('notes');
     }
-  }, [editTask]);
+  }, [editTask, priorities]);
 
   // Fonction pour créer une tâche
   const handleSaveTask = async () => {
@@ -118,7 +116,7 @@ export default function TaskModal({ open, onClose, onTaskCreated, editTask, setE
       setDate(new Date());
       setStartHour('09:00');
       setEndHour('14:00');
-      setSelectedList('');
+      // removed unused selectedList state
       // Fermer la modale
       onClose();
       // Rafraîchir la liste des tâches

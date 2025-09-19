@@ -2,6 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
+import Link from 'next/link';
 
 export default function HomePage() {
   const router = useRouter();
@@ -22,9 +23,9 @@ export default function HomePage() {
       {/* Navbar */}
       <nav className="flex items-center justify-between px-6 md:px-16 lg:px-24 xl:px-32 py-4 border-b border-gray-200 font-medium relative z-10 bg-white backdrop-blur-md">
         {/* Logo */}
-        <a href="/" className="text-2xl font-bold text-[#18181b] hover:text-black transition-colors">
-        Planify
-        </a>
+        <Link href="/" className="text-2xl font-bold text-[#18181b] hover:text-black transition-colors">
+          Planify
+        </Link>
 
         {/* Hamburger (Mobile) */}
         <button id="menu-toggle" className="md:hidden text-[#18181b] focus:outline-none">
@@ -36,7 +37,7 @@ export default function HomePage() {
 
         {/* Nav Links */}
         <ul id="nav-menu" className="hidden max-md:absolute top-full left-0 max-md:w-full md:flex md:items-center gap-8 max-md:bg-white max-md:shadow-md max-md:px-6 max-md:py-4 flex-col md:flex-row z-50">
-          <li><a className="hover:text-black md:hover:underline underline-offset-8 transition" href="/">Accueil</a></li>
+          <li><Link className="hover:text-black md:hover:underline underline-offset-8 transition" href="/">Accueil</Link></li>
           <li><a className="hover:text-black md:hover:underline underline-offset-8 transition" href="#about">À propos</a></li>
           <li><a className="hover:text-black md:hover:underline underline-offset-8 transition" href="#features">Fonctionnalités</a></li>
           <li><a className="hover:text-black md:hover:underline underline-offset-8 transition" href="#privacy">Confidentialité</a></li>
